@@ -1,0 +1,30 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: employeedb
+    ports:
+      - "3307:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  frontend:
+    build: ./frontend
+    image: frontend:v0.0.1
+    container_name: frontend
+  backend:
+    build: ./backend
+    image: backend:v0.0.01
+    container_name: backend
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      #- mysql
+      mysql:
+        condition: service_healthy
