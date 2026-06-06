@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'employee_app/backend/**'
+      - 'employee_app/frontend/**'
+      - '.github/workflows/**'
 jobs:
   build:
     runs-on: self-hosted
