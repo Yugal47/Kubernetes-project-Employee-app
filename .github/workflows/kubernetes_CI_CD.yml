@@ -39,7 +39,7 @@ jobs:
 
       - name: Wait for Backend Rollout
         run: |
-        kubectl rollout status deployment/employee-app-backend
+          kubectl rollout status deployment/employee-app-backend
 
       - name: Build and Push Frontend
         run: |
