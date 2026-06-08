@@ -23,3 +23,10 @@ spec:
               key: password
         - name: MYSQL_DATABASE
           value: "employeedb"
+        volumeMounts:
+        - name: mysql-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-storage
+        persistentVolumeClaim:
+          claimName: mysql-pvc
