@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: employee-app-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: employee-app-frontend
+  template:
+    metadata:
+      labels:
+        app: employee-app-frontend
+    spec:
+      containers:
+      - name: employee-app-frontend
+        image: yugal47/employee-app-frontend:v0.0.5
+        imagePullPolicy: Always
